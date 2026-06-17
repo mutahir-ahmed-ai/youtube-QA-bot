@@ -1,7 +1,8 @@
 import os
 import re
 import streamlit as st
-from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled, NoTranscriptFound
+from youtube_transcript_api import YouTubeTranscriptApi
+from youtube_transcript_api._errors import TranscriptsDisabled, NoTranscriptFound
 from langchain_groq import ChatGroq
 from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -70,8 +71,9 @@ def extract_video_id(url):
 
 # --- Helper: Get Transcript ---
 def get_transcript(video_id):
-    transcript_list = YouTubeTranscriptApi.get_transcript(video_id)
-    full_text = " ".join([entry["text"] for entry in transcript_list])
+    ytt = YouTubeTranscriptApi()
+    transcript_list = ytt.fetch(video_id)
+    full_text = " ".join([entry.text for entry in transcript_list])
     return full_text
 
 # --- Helper: Build Vector Store ---
