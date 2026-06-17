@@ -3,7 +3,7 @@
 Ask questions about any YouTube video using AI. Paste a YouTube link, and the bot instantly builds a knowledge base from the video transcript and answers your questions using RAG (Retrieval-Augmented Generation).
 
 ## 🚀 Live Demo
-[👉 Try it here]: 
+You can check the live demo app here:
 https://youtube-app-bot-qehjgzpv3jx854q7zpthfy.streamlit.app/
 
 ## 💡 Features
